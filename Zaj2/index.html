@@ -7,20 +7,37 @@
     <title>Slider</title>
 </head>
 <body>
-    <div class="slide">
-      <div class="imgSlide">
-          <img src="https://i.picsum.photos/id/459/200/300.jpg?hmac=4Cn5sZqOdpuzOwSTs65XA75xvN-quC4t9rfYYyoTCEI" alt="">
-          <img src="https://i.picsum.photos/id/240/200/300.jpg?hmac=oqwZqcYrZ2nqhtDKiob6qVc3u_vuKLh89nVzKs_jnNg" alt="">
-          <img src="https://i.picsum.photos/id/936/200/300.jpg?hmac=2SjFPkZpMzhNZnH6hwt9r9kUFo82iIJ22lkr7wdve8A" alt="">
-          <img src="https://i.picsum.photos/id/41/200/300.jpg?hmac=oimmvNf5GBZCx44LN9J4KGnDqUvSWmmUwPcLUaUMxF0" alt="">
+<button class="back" type="button" onclick="Back()"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+    <div class="slider">
+      <div class="elements">
+          <input type="radio" name="radio-btn" id="radioItem1" class="radioClass" onclick="counter=0">
+          <input type="radio" name="radio-btn" id="radioItem2" class="radioClass" onclick="counter=1">
+          <input type="radio" name="radio-btn" id="radioItem3" class="radioClass" onclick="counter=2">
+          <input type="radio" name="radio-btn" id="radioItem4" class="radioClass" onclick="counter=3">
+          <div class="imageSlider first">
+              <img id="slide1" src="https://i.picsum.photos/id/459/200/300.jpg?hmac=4Cn5sZqOdpuzOwSTs65XA75xvN-quC4t9rfYYyoTCEI" alt="">
+          </div>
+          <div class="imageSlider">
+              <img id="slider2" src="https://i.picsum.photos/id/240/200/300.jpg?hmac=oqwZqcYrZ2nqhtDKiob6qVc3u_vuKLh89nVzKs_jnNg" alt="">
+          </div>
+          <div class="imageSlider">
+              <img id="slider3" src="https://i.picsum.photos/id/936/200/300.jpg?hmac=2SjFPkZpMzhNZnH6hwt9r9kUFo82iIJ22lkr7wdve8A" alt="">
+          </div>
+          <div class="imageSlider">
+              <img id="slider4" src="https://i.picsum.photos/id/41/200/300.jpg?hmac=oimmvNf5GBZCx44LN9J4KGnDqUvSWmmUwPcLUaUMxF0" alt="">
+          </div>
       </div>
+        <div class="navigation-manual">
+            <label for="radioItem1" class="itemBtn"></label>
+            <label for="radioItem2" class="itemBtn"></label>
+            <label for="radioItem3" class="itemBtn"></label>
+            <label for="radioItem4" class="itemBtn"></label>
+        </div>
+        <div class="pauseButton">
+            <button class="stop-start" type="button" onclick="startStop()"><span class="material-symbols-outlined" id="pauseBtn">pause_circle</span></button>
+        </div>
     </div>
-    <button type="button" id="back">
-        <span class="material-symbols-outlined">arrow_back</span>
-    </button>
-    <button type="button" id="next">
-        <span class="material-symbols-outlined">arrow_forward</span>
-    </button>
+    <button class="next" type="button" onclick="Next()"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
