@@ -5,9 +5,38 @@
     <title>Title</title>
 </head>
 <body>
-<audio controls id="s1">
-    <source src="./sounds/boom.wav" type="audio/wav">
-</audio>
+<div class="keys">
+    <audio src="./sounds/boom.wav" controls id="s1" hidden></audio>
+    <audio src="./sounds/clap.wav" controls id="s2" hidden></audio>
+    <audio src="./sounds/hihat.wav" controls id="s3" hidden></audio>
+    <audio src="./sounds/kick.wav" controls id="s4" hidden></audio>
+    <audio src="./sounds/openhat.wav" controls id="s5" hidden></audio>
+    <audio src="./sounds/ride.wav" controls id="s6" hidden></audio>
+    <audio src="./sounds/snare.wav" controls id="s7" hidden></audio>
+    <audio src="./sounds/tink.wav" controls id="s8" hidden></audio>
+    <audio src="./sounds/tom.wav" controls id="s9" hidden></audio>
+</div>
+<div id="lineOne">
+    <input type="button" id="firstRecordingButton" value="Record line 1">
+    <label for="firstLinePlayCheckbox">Line 1</label><input type="checkbox" id="firstLinePlayCheckbox">
+    <input type="button" id="firstLinePlayButton" value="Play Line 1">
+</div>
+<div id="lineTwo">
+    <input type="button" id="secondRecordingButton" value="Record line 2">
+    <label for="secondLinePlayCheckbox">Line 2</label><input type="checkbox" id="secondLinePlayCheckbox">
+    <input type="button" id="secondLinePlayButton" value="Play Line 2">
+</div>
+<div id="lineThree">
+    <input type="button" id="thirdRecordingButton" value="Record line 3">
+    <label for="thirdLinePlayCheckbox">Line 3</label><input type="checkbox" id="thirdLinePlayCheckbox">
+    <input type="button" id="thirdLinePlayButton" value="Play Line 3">
+</div>
+<div id="lineFour">
+    <input type="button" id="fourthRecordingButton" value="Record line 4">
+    <label for="fourthLinePlayCheckbox">Line 4</label><input type="checkbox" id="fourthLinePlayCheckbox">
+    <input type="button" id="fourthLinePlayButton" value="Play Line 4">
+</div>
+<input type="button" id="allPlayButton" value="Play">
 <script type="text/javascript" src="drumKit.js"></script>
 </body>
 </html>
