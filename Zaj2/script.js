@@ -48,5 +48,5 @@ const autoSwitch = () =>{
     }
 }
 
-setInterval(autoSwitch, 3000);
+setInterval(autoSwitch, 5000);
 
