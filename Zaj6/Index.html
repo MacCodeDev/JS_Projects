@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        button {
+            display: inline-block;
+            padding: 0.5em 1em;
+            border: 1px solid black;
+            border-radius: 3px;
+            background-color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: lightgray;
+        }
+        input[type="text"] {
+            display: inline-block;
+            width: 4em;
+            font-size: 16px;
+            border: 1px solid black;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<br>
+<label for="num-balls">Liczba kulek:</label>
+<input type="number" id="num-balls" value="15">
+<br>
+<label for="min-distance">Odległość:</label>
+<input type="number" id="min-distance" value="50">
+<br>
+<button id="start">Start</button>
+<button id="reset">Reset</button>
+<script src="app.js">
+</script>
+</body>
+</html>
