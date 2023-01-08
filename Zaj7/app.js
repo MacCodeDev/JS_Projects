@@ -1,0 +1,1 @@
+const cityName = document.querySelector('#cityName')
