@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css.css">
     <title>Title</title>
 </head>
 <body>
+
+<div class="allKeys">
+    <div data-key="65" class="key">
+        <kbd>A</kbd>
+    </div>
+    <div data-key="83" class="key">
+        <kbd>S</kbd>
+    </div>
+    <div data-key="68" class="key">
+        <kbd>D</kbd>
+    </div>
+    <div data-key="70" class="key">
+        <kbd>F</kbd>
+    </div>
+    <div data-key="71" class="key">
+        <kbd>G</kbd>
+    </div>
+    <div data-key="72" class="key">
+        <kbd>H</kbd>
+    </div>
+    <div data-key="74" class="key">
+        <kbd>J</kbd>
+    </div>
+    <div data-key="75" class="key">
+        <kbd>K</kbd>
+    </div>
+</div>
+
 <div class="keys">
     <audio src="./sounds/boom.wav" controls id="s1" hidden></audio>
     <audio src="./sounds/clap.wav" controls id="s2" hidden></audio>
@@ -16,27 +45,33 @@
     <audio src="./sounds/tink.wav" controls id="s8" hidden></audio>
     <audio src="./sounds/tom.wav" controls id="s9" hidden></audio>
 </div>
-<div id="lineOne">
-    <input type="button" id="firstRecordingButton" value="Record line 1">
-    <label for="firstLinePlayCheckbox">Line 1</label><input type="checkbox" id="firstLinePlayCheckbox">
-    <input type="button" id="firstLinePlayButton" value="Play Line 1">
+<div class="allLine">
+    <div id="lineOne">
+        <input type="button" id="firstRecordingButton" value="Record line 1" class="recordsButtons" onclick="recordStop(0)">
+        <input type="button" id="firstLinePlayButton" value="Play Line 1">
+        <input type="checkbox" id="firstLinePlayCheckbox"><label for="firstLinePlayCheckbox">Use line 1</label>
+    </div>
+    <div id="lineTwo">
+        <input type="button" id="secondRecordingButton" value="Record line 2" class="recordsButtons" onclick="recordStop(1)">
+        <input type="button" id="secondLinePlayButton" value="Play Line 2">
+        <input type="checkbox" id="secondLinePlayCheckbox"><label for="secondLinePlayCheckbox">Use line 2</label>
+    </div>
+    <div id="lineThree">
+        <input type="button" id="thirdRecordingButton" value="Record line 3" class="recordsButtons" onclick="recordStop(2)">
+        <input type="button" id="thirdLinePlayButton" value="Play Line 3">
+        <input type="checkbox" id="thirdLinePlayCheckbox"><label for="thirdLinePlayCheckbox">Use line 3</label>
+    </div>
+    <div id="lineFour">
+        <input type="button" id="fourthRecordingButton" value="Record line 4" class="recordsButtons" onclick="recordStop(3)">
+        <input type="button" id="fourthLinePlayButton" value="Play Line 4">
+        <input type="checkbox" id="fourthLinePlayCheckbox"><label for="fourthLinePlayCheckbox">Use line 4</label>
+    </div>
 </div>
-<div id="lineTwo">
-    <input type="button" id="secondRecordingButton" value="Record line 2">
-    <label for="secondLinePlayCheckbox">Line 2</label><input type="checkbox" id="secondLinePlayCheckbox">
-    <input type="button" id="secondLinePlayButton" value="Play Line 2">
+<div id="divAllPlay">
+    <div id="nextAllPlay">
+        <input type="button" id="allPlayButton" value="Play">
+    </div>
 </div>
-<div id="lineThree">
-    <input type="button" id="thirdRecordingButton" value="Record line 3">
-    <label for="thirdLinePlayCheckbox">Line 3</label><input type="checkbox" id="thirdLinePlayCheckbox">
-    <input type="button" id="thirdLinePlayButton" value="Play Line 3">
-</div>
-<div id="lineFour">
-    <input type="button" id="fourthRecordingButton" value="Record line 4">
-    <label for="fourthLinePlayCheckbox">Line 4</label><input type="checkbox" id="fourthLinePlayCheckbox">
-    <input type="button" id="fourthLinePlayButton" value="Play Line 4">
-</div>
-<input type="button" id="allPlayButton" value="Play">
 <script type="text/javascript" src="drumKit.js"></script>
 </body>
 </html>

@@ -1,0 +1,93 @@
+body{
+    background: rgb(117,69,30);
+    background: linear-gradient(90deg, rgba(117,69,30,1) 0%, rgba(212,185,105,1) 50%, rgba(117,69,30,1) 100%);
+}
+input[type="button"] {
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 1em;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #1a1616;
+}
+label{
+    margin-top: 5px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#allPlayButton {
+    background-color: #47bc47;
+    width: 200px;
+}
+#divAllPlay{
+    height: 30px;
+    position: relative;
+}
+#nextAllPlay{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#firstRecordingButton, #secondRecordingButton, #thirdRecordingButton, #fourthRecordingButton {
+    background-color: #992e2e;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+#firstLinePlayButton, #secondLinePlayButton, #thirdLinePlayButton, #fourthLinePlayButton {
+    background-color: rgba(102, 67, 47, 0.4);
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+    width: 200px;
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    margin: auto;
+    display: block;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+}
+
+
+.allLine
+{
+    display: flex;
+    padding: 1rem .5rem;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+.allKeys {
+    display: flex;
+    flex: 1;
+    min-height: 20vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.key {
+    border: .2rem solid rgba(67, 51, 38, 0.24);
+    border-radius: 8rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    width: 5rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.24);
+    background: rgba(234, 62, 114, 0.4);
+}
+input[type="button"]:active {
+    transform: scale(0.95);
+}

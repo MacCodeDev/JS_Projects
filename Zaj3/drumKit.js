@@ -128,6 +128,19 @@ function eventChose() {
         stopRecording()
     }
 }
+let recordingClassButton = document.querySelectorAll('.recordsButtons')
+console.log(recordingClassButton)
+const recordStop = (buttonNumber) => {
+    let tmp = recordingClassButton.item(buttonNumber).value.split(" ")
+    if(tmp[0] !== "Stop")
+    {
+        recordingClassButton.item(buttonNumber).value = "Stop record line " + (buttonNumber + 1)
+    }
+    else
+    {
+        recordingClassButton.item(buttonNumber).value = "Record line " + (buttonNumber + 1)
+    }
+}
 
 function playRecords(lineInstruments, lineTimer) {
         let checkTime = []
@@ -139,3 +152,25 @@ function playRecords(lineInstruments, lineTimer) {
             }, checkTime[index])
         }
 }
+
+document.addEventListener("keydown", function(event) {
+    let keys = document.querySelectorAll('.key')
+    let tmp = 0
+    let newTmp = 0
+    let check = false
+    console.log(event.code.split("y")[1])
+    keys.forEach(function(element) {
+        if(element.lastElementChild.innerText === event.code.split("y")[1])
+        {
+            check = true
+            newTmp = tmp
+        }
+        tmp++
+    });
+    if (check === true) {
+        keys[newTmp].style.backgroundColor = "rgba(102, 217, 251, 0.4)";
+        setTimeout(function() {
+            keys[newTmp].style.backgroundColor = "rgba(234, 62, 114, 0.4)";
+        }, 50);
+    }
+});
