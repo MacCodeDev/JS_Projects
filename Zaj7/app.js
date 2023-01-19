@@ -63,7 +63,7 @@ const addNewCity = (city,tempe,humid,imgSrc) => {
         dataDiv.append(dataHum)
         deleteBtn = document.createElement('button')
         deleteBtn.classList.add('delete')
-        deleteBtn.textContent = 'test'
+        deleteBtn.textContent = 'Delete City'
         newWeather.append(deleteBtn)
         ulList.append(newWeather)
 
