@@ -14,6 +14,10 @@ let newWeather, header, img, deleteBtn
 const getInfo = () => {
     if (ulList.childElementCount < 10) {
         const city = inputCity.value || 'Warszawa'
+        if(inputCity.value !== '')
+        {
+            localStorage.setItem('City' + ulList.childElementCount,inputCity.value)
+        }
         const fullUrl = apiLink + city + apiKey
         fetchRequest(fullUrl)
     }

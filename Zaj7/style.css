@@ -6,6 +6,7 @@ body{
 ul{
     list-style-type: none;
     display: flex;
+    padding: 0;
 }
 
 .Weather-section{
@@ -39,6 +40,13 @@ ul{
 h2{
     text-align: center;
     margin-bottom: -15px;
+}
+
+#inputCity{
+    border-radius: 8px;
+    border-style: solid;
+    box-sizing: border-box;
+
 }
 
 img{
