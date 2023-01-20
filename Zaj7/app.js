@@ -50,17 +50,35 @@ const addNewCity = (city,tempe,humid,imgSrc) => {
         img.src = imgSrc
         newWeather.append(img)
         header.textContent = city
+
         const dataDiv  = document.createElement('div')
         dataDiv.classList.add('Weather-section')
-        newWeather.append(dataDiv)
+
+        const dataDivTemp  = document.createElement('div')
+        dataDivTemp.classList.add('Temp-section')
+
+        const dataTempLabel  = document.createElement('h4')
         const dataTemp  = document.createElement('p')
+        dataTempLabel.textContent = 'Temperature:'
         dataTemp.classList.add('temperature')
         dataTemp.textContent = tempe
-        dataDiv.append(dataTemp)
+
+        const dataDivHum  = document.createElement('div')
+        dataDivHum.classList.add('Hum-section')
+
+        const dataHumLabel  = document.createElement('h4')
         const dataHum  = document.createElement('p')
+        dataHumLabel.textContent = 'Humidity:'
         dataHum.classList.add('humidity')
         dataHum.textContent = humid
-        dataDiv.append(dataHum)
+
+        dataDivTemp.append(dataTempLabel)
+        dataDivTemp.append(dataTemp)
+        dataDivHum.append(dataHumLabel)
+        dataDivHum.append(dataHum)
+        dataDiv.append(dataDivHum)
+        dataDiv.append(dataDivTemp)
+        newWeather.append(dataDiv)
         deleteBtn = document.createElement('button')
         deleteBtn.classList.add('delete')
         deleteBtn.textContent = 'Delete City'
