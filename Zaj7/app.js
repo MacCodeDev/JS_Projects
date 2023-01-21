@@ -41,6 +41,7 @@ function fetchRequest( url ) {
                 for(let i = 0;i<=allLi.length;i++) {
                     if (inputCity.value === allLi[0].firstElementChild.textContent) {
                         alert('This city already exists')
+                        inputCity.value = ''
                         return
                     }
                 }
