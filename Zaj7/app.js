@@ -38,8 +38,8 @@ function fetchRequest( url ) {
             const allLi = document.querySelectorAll('li')
             if(allLi.item(0) !== null) {
                 //console.log(allLi[0].firstElementChild)
-                for(let i = 0;i<=allLi.length;i++) {
-                    if (inputCity.value === allLi[0].firstElementChild.textContent) {
+                for(let i = 0;i<=allLi.length-1;i++) {
+                    if (data.name === allLi[i].firstElementChild.textContent) {
                         alert('This city already exists')
                         inputCity.value = ''
                         return
