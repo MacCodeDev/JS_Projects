@@ -8,17 +8,25 @@
 <body>
     <div class="todolist">
         <div class="main">
-            <input type="text" class="todo-add" placeholder="Add news task...">
+            <input type="text" class="todo-add" placeholder="Write topic...">
+            <input type="text" class="content-input" placeholder="Write content...">
+            <select class="form-list" name="caList">
+                <option value="Blue">Blue</option>
+                <option value="Red">Red</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Green">Green</option>
+                <option value="White">White</option>
+            </select>
             <button class="btn-add">Add</button>
         </div>
         <div class="list">
-            <p class="error">Task list is empty!</p>
+            <p class="error">Note list is empty!</p>
             <ul>
             </ul>
         </div>
     </div>
 <div class="editTask">
-    <div class="editTask-main">
+    <div class="editTask-main" >
         <p class="editTask-msg"></p>
         <input type="text" class="editTask-input" placeholder="Change your task">
         <button class="editTask-btn accept">Accept</button>
