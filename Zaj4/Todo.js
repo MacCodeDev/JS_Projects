@@ -18,8 +18,8 @@ const StartApp = () =>{
         addNewTask()
     }
     checkN = 1
-    console.log(ulList.childNodes)
-    ulList.re(ulList.childNodes[2],ulList.childNodes[1])
+    //console.log(ulList.childNodes)
+    //ulList.insertBefore(ulList.childNodes[1],ulList.firstChild)
 }
 
 document.addEventListener('DOMContentLoaded', main)
@@ -80,18 +80,20 @@ const createToolsArea = () =>{
     const tools = document.createElement('div')
     tools.classList.add('tool')
     newTask.append(tools)
+    const accept = document.createElement('button')
+    accept.classList.add('complete')
     const edit = document.createElement('button')
     edit.classList.add('edit')
     edit.innerText = 'EDIT'
     const deleteBtn = document.createElement('button')
     deleteBtn.classList.add('delete')
     deleteBtn.innerHTML = '<span class="material-symbols-outlined">close</span>'
-    tools.append(edit,deleteBtn)
+    tools.append(accept,edit,deleteBtn)
 }
 
 const checkClick = e => {
     if(e.target.matches('.complete')){
-        e.target.closest('li').classList.toggle('completed')
+        changeNode(e)
     }
     else if(e.target.matches('.edit')){
         editMsg(e)
@@ -134,6 +136,13 @@ const deleteTask = (event) =>{
     if(allTask.length === 0){
         errorInfo.textContent = 'Note list is empty!'
     }
+}
+
+const changeNode = (event) =>{
+    const li = event.target.closest('li')
+    const index = Array.from(ulList.childNodes).indexOf(li);
+    console.log(index)
+    ulList.insertBefore(ulList.childNodes[index],ulList.firstChild)
 }
 
 const enterClick = (event) =>{
