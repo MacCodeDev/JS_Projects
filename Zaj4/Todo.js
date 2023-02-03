@@ -1,5 +1,5 @@
 let todoInput, errorInfo, addBtn, ulList, newTask, msg, msgInfo, editTask, msgInput, msgAccept, msgCancel,contentToDo,contentInput,dateA,colorN, tmpDateS
-let checkN
+let checkN,i,msgInputContent
 if(localStorage.length > 0) {
     checkN = 0
 }
@@ -10,15 +10,12 @@ const main = () => {
 
 const StartApp = () =>{
     for (let i = 0; i < localStorage.length; i++){
-        const storedBlogs = JSON.parse(localStorage.getItem(localStorage.key(i)))
-        todoInput.value = storedBlogs[1]
-        contentInput.value = storedBlogs[2]
-        colorN.value = storedBlogs[0]
-        tmpDateS = storedBlogs[3]
-        addNewTask()
+        const myArr = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        tmpDateS = myArr[3]
+        addNewTask(myArr[1],myArr[2],myArr[0])
     }
     checkN = 1
-    //console.log(ulList.childNodes)
+    console.log(localStorage)
     //ulList.insertBefore(ulList.childNodes[1],ulList.firstChild)
 }
 
@@ -33,27 +30,31 @@ const prepareDOMElements = () => {
     msg = document.querySelector('.editTask')
     msgInfo = document.querySelector('.editTask-msg')
     msgInput = document.querySelector('.editTask-input')
+    msgInputContent = document.querySelector('.editTaskContent-input')
     msgAccept = document.querySelector('.accept')
     msgCancel = document.querySelector('.cancel')
 }
 
 const prepareDOMEvents = () => {
-    addBtn.addEventListener('click', addNewTask)
+    addBtn.addEventListener('click', Start)
     ulList.addEventListener('click', checkClick)
     msgCancel.addEventListener('click', closeMsg)
     msgAccept.addEventListener('click', acceptTaskChange)
     todoInput.addEventListener('keyup', enterClick)
+    contentInput.addEventListener('keyup', enterClick)
 }
 
-const addNewTask = () => {
-    if(todoInput.value !== ''  &&  contentInput.value !== '') {
+const addNewTask = (a,b,c) => {
+    if(a !== ''  &&  b !== '') {
         newTask = document.createElement('li')
-        newTask.style.backgroundColor = colorN.value
-        newTask.textContent = todoInput.value
+        newTask.style.backgroundColor = c
+        newTask.textContent = a
         contentToDo = document.createElement('p')
-        contentToDo.textContent = contentInput.value
+        contentToDo.classList.add('pContent')
+        contentToDo.textContent = b
         newTask.append(contentToDo)
         contentToDo = document.createElement('p')
+        contentToDo.classList.add('pDate')
         dateA = new Date()
         if(tmpDateS === undefined || tmpDateS === '') {
             tmpDateS = `${dateA.getDate()}.${dateA.getMonth() + 1}.${dateA.getFullYear()}`
@@ -63,9 +64,7 @@ const addNewTask = () => {
         createToolsArea()
         ulList.append(newTask)
         if(checkN === 1){
-            const myArr = [colorN.value, todoInput.value,contentInput.value,tmpDateS];
-            localStorage.setItem(contentInput.value, JSON.stringify(myArr))
-            console.log(localStorage)
+            endUnload()
         }
         todoInput.value = ''
         contentInput.value = ''
@@ -81,13 +80,15 @@ const createToolsArea = () =>{
     tools.classList.add('tool')
     newTask.append(tools)
     const accept = document.createElement('button')
+    accept.innerText = 'Pin Up'
     accept.classList.add('complete')
     const edit = document.createElement('button')
     edit.classList.add('edit')
     edit.innerText = 'EDIT'
     const deleteBtn = document.createElement('button')
+    deleteBtn.innerText = 'Delete Note'
     deleteBtn.classList.add('delete')
-    deleteBtn.innerHTML = '<span class="material-symbols-outlined">close</span>'
+    //deleteBtn.innerHTML = '<span class="material-symbols-outlined">close</span>'
     tools.append(accept,edit,deleteBtn)
 }
 
@@ -106,6 +107,7 @@ const checkClick = e => {
 const editMsg = event => {
     editTask = event.target.closest('li')
     msgInput.value = editTask.firstChild.textContent
+    msgInputContent.value = editTask.childNodes[1].textContent
     console.log(editTask.firstChild)
     msg.style.display = 'flex'
 }
@@ -115,13 +117,11 @@ const closeMsg = () => {
 }
 
 const acceptTaskChange = () =>{
-    if(msgInput.value !== '')
+    if(msgInput.value !== '' && msgInputContent.value !== '' )
     {
-        const myArr = JSON.parse(localStorage.getItem(editTask.firstElementChild.textContent))
-        localStorage.removeItem(editTask.firstElementChild.textContent)
-        myArr[1] = msgInput.value
-        localStorage.setItem(contentInput.value, JSON.stringify(myArr))
         editTask.firstChild.textContent = msgInput.value
+        editTask.childNodes[1].textContent = msgInputContent.value
+        endUnload()
         closeMsg()
     }
     else{
@@ -130,9 +130,13 @@ const acceptTaskChange = () =>{
 }
 
 const deleteTask = (event) =>{
-    localStorage.removeItem(event.target.closest('li').firstElementChild.textContent)
+    const li = event.target.closest('li')
+    const index = Array.from(ulList.childNodes).indexOf(li);
+    console.log(index)
+    localStorage.removeItem(index)
     event.target.closest('li').remove()
     const allTask = ulList.querySelectorAll('li')
+    endUnload()
     if(allTask.length === 0){
         errorInfo.textContent = 'Note list is empty!'
     }
@@ -143,11 +147,26 @@ const changeNode = (event) =>{
     const index = Array.from(ulList.childNodes).indexOf(li);
     console.log(index)
     ulList.insertBefore(ulList.childNodes[index],ulList.firstChild)
+    endUnload()
+
+}
+
+const Start = () =>{
+    addNewTask(todoInput.value,contentInput.value,colorN.value)
 }
 
 const enterClick = (event) =>{
     if(event.key === 'Enter'){
-        addNewTask()
+        addNewTask(todoInput.value,contentInput.value,colorN.value,)
+    }
+}
+
+const endUnload = () =>{
+    localStorage.clear()
+    for (i = 0;i < ulList.childNodes.length;i++){
+        let dd = ulList.childNodes[i].childNodes[2].textContent.split(' ')
+        const myArr = [ulList.childNodes[i].style.backgroundColor, ulList.childNodes[i].childNodes[0].textContent,ulList.childNodes[i].childNodes[1].textContent,dd[2]];
+        localStorage.setItem(i, JSON.stringify(myArr))
     }
 }
 
