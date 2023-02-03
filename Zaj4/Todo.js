@@ -9,10 +9,13 @@ const main = () => {
 }
 
 const StartApp = () =>{
-    for (let i = 0; i < localStorage.length; i++){
-        const myArr = JSON.parse(localStorage.getItem(localStorage.key(i)))
-        tmpDateS = myArr[3]
-        addNewTask(myArr[1],myArr[2],myArr[0])
+    const myArr = JSON.parse(localStorage.getItem('table'))
+    if(myArr !== null) {
+        for (let i = 0; i < myArr.length; i++) {
+            const endArr = myArr[i]
+            tmpDateS = endArr[3]
+            addNewTask(endArr[1], endArr[2], endArr[0])
+        }
     }
     checkN = 1
     console.log(localStorage)
@@ -163,11 +166,14 @@ const enterClick = (event) =>{
 
 const endUnload = () =>{
     localStorage.clear()
+    let endArr = []
     for (i = 0;i < ulList.childNodes.length;i++){
         let dd = ulList.childNodes[i].childNodes[2].textContent.split(' ')
         const myArr = [ulList.childNodes[i].style.backgroundColor, ulList.childNodes[i].childNodes[0].textContent,ulList.childNodes[i].childNodes[1].textContent,dd[2]];
-        localStorage.setItem(i, JSON.stringify(myArr))
+        endArr.push(myArr)
     }
+    console.log(endArr)
+    localStorage.setItem('table', JSON.stringify(endArr))
 }
 
 window.addEventListener("load", function() {
